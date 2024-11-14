@@ -1,5 +1,6 @@
 ﻿using Bookstore.Data;
 using Bookstore.Models;
+using Bookstore.Services.Exception;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookstore.Services
@@ -27,6 +28,20 @@ namespace Bookstore.Services
         public async Task<Genre?> FindByIdAsync(int id)
         {
             return await _context.Genres.FindAsync(id);
+        }
+
+        public async Task RemoveAsync(int id)
+        {
+            try
+            {
+                var obj = await _context.Genres.FindAsync(id);
+                _context.Genres.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new IntegrityException("Não foi possivel concluir operação.");
+            }
         }
     }
 }

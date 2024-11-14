@@ -1,7 +1,10 @@
 ﻿using Bookstore.Data;
 using Bookstore.Models;
+using Bookstore.Models.ViewModels;
 using Bookstore.Services;
+using Bookstore.Services.Exception;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Bookstore.Controllers
@@ -51,6 +54,31 @@ namespace Bookstore.Controllers
                 return RedirectToAction(nameof(Error), new { message = "id não encontrado" });
             }
             return View(obj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await _service.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException ex)
+            {
+                return RedirectToAction(nameof(Error), new { message = ex.Message });
+            }
+        }
+
+        public IActionResult Error(string? message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
