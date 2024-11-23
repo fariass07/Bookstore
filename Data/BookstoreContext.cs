@@ -10,5 +10,6 @@ namespace Bookstore.Data
         }
 
         public DbSet<Genre> Genres { get; set; }
+        public object Books { get; internal set; }
     }
 }

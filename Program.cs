@@ -13,6 +13,7 @@ namespace Bookstore
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<GenreService>();
 
 
@@ -40,6 +41,11 @@ namespace Bookstore
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+            else
+            {
+                // Criamos um escopo de execução nos serviços, usamos o GetRequiredService para selecionar o serviço a ser executado e selecionamos o método Seed().
+                app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
             }
 
             app.UseHttpsRedirection();
