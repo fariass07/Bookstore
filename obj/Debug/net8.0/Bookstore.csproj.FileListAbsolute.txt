@@ -1,0 +1,9 @@
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.csproj.AssemblyReference.cache
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.AssemblyInfoInputs.cache
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.AssemblyInfo.cs
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.csproj.CoreCompileInputs.cache
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.RazorAssemblyInfo.cache
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.RazorAssemblyInfo.cs
+C:\Users\bernardo.farias\Desktop\obookstore\Bookstore\obj\Debug\net8.0\Bookstore.sourcelink.json
