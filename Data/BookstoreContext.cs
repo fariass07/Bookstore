@@ -8,8 +8,11 @@ namespace Bookstore.Data
         public BookstoreContext(DbContextOptions<BookstoreContext> options) : base(options)
         {
         }
-
+        
         public DbSet<Genre> Genres { get; set; }
-        public object Books { get; internal set; }
-    }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Sales> Sale { get; set; }
+        public DbSet<Sellers> Seller { get; set; }
+
+	}
 }

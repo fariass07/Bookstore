@@ -32,7 +32,7 @@ namespace Bookstore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Genre genre)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -55,10 +55,9 @@ namespace Bookstore.Controllers
             }
             return View(obj);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete (int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
@@ -71,27 +70,17 @@ namespace Bookstore.Controllers
             }
         }
 
-        public IActionResult Error(string message)
-        {
-            var viewModel = new ErrorViewModel
-            {
-                Message = message,
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
-            };
-
-            return View(viewModel);
-        }
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id is null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id não fornecido" });
+                return RedirectToAction(nameof(Error), new { message = "id não fornecido" });
             }
+
             var obj = await _service.FindByIdAsync(id.Value);
             if (obj is null)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id não encontrado" });
+                return RedirectToAction(nameof(Error), new { message = "id não encontrado" });
             }
             return View(obj);
         }
@@ -104,21 +93,44 @@ namespace Bookstore.Controllers
             {
                 return View();
             }
-
             if (id != genre.Id)
             {
-                return RedirectToAction(nameof(Error), new { message = "Id's não condizentes." });
+                return RedirectToAction(nameof(Error), new {message = "Id`s não condizentes"});
             }
-
             try
             {
                 await _service.UpdateAsync(genre);
                 return RedirectToAction(nameof(Index));
             }
-            catch (ApplicationException ex)
+            catch(ApplicationException ex)
             {
-                return RedirectToAction(nameof(Error), new { message = ex.Message });
+                return RedirectToAction(nameof(Error), new { message = ex.Message});
             }
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id is null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "id não fornecido" });
+            }
+
+            var obj = await _service.FindByIdAsync(id.Value);
+            if (obj is null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "id não encontrado" });
+            }
+            return View(obj);
+        }
+
+        public IActionResult Error(string? message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
