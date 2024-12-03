@@ -1,9 +1,12 @@
-﻿namespace Bookstore.Services.Exceptions
+﻿using System.Runtime.Serialization;
+
+namespace Bookstore.Services.Exceptions
 {
-    public class NotFoundException : ApplicationException
+    [Serializable]
+    internal class NotFoundException : ApplicationException
     {
-        public NotFoundException(string? message) : base(message) 
-        { 
+        public NotFoundException(string? message) : base(message)
+        {
 
         }
     }

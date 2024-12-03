@@ -1,11 +1,12 @@
 ﻿@using Bookstore.Models.ViewModels;
 @model ErrorViewModel
 @{
-    ViewData["Title"] = "Erro";
+    ViewData["Title"] = "Error";
 }
 
-<h1 class="text-danger">@ViewData["Title"]</h1>
-<h2 class="text-danger">@Model.Message</h2>
+<h1 class="text-danger">ERRO.</h1>
+<h2 class="text-danger">Um erro ocorreu.</h2>
+<h3 class="text-danger">Id não encontrado.</h3>
 
 @if (Model.ShowRequestId)
 {

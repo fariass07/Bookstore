@@ -2,7 +2,7 @@
 
 namespace Bookstore.Models
 {
-    public class Seller
+    public class Sellers
     {
         public int Id { get; set; }
 
@@ -22,9 +22,9 @@ namespace Bookstore.Models
         [Display(Name = "Vendas")]
         public ICollection<Sales> Sales { get; set; } = new List<Sales>();
 
-        public Seller() { }
+        public Sellers() { }
 
-        public Seller(int id, string name, string email, double salary)
+        public Sellers(int id, string name, string email, double salary)
         {
             Id = id;
             Name = name;

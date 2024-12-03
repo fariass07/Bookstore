@@ -1,17 +1,17 @@
 ﻿@model Bookstore.Models.Genre
 
 @{
-    ViewData["Title"] = "Editar Gênero Literário";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Edit</h1>
 
-<h4 class="lead">Altere as informações desejadas abaixo</h4>
+<h4>Genre</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <!-- Esse input oculto contribui para que a requisição de edição seja feita apropriadamente -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -19,18 +19,15 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Salvar Alterações" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar para a lista</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
